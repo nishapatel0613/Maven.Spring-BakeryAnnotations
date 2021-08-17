@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@RequestMapping(value = "/muffin-controller")
 public class MuffinController {
 
     @Autowired
@@ -30,13 +31,13 @@ public class MuffinController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/muffins")
-    public ResponseEntity<Muffin> create(@RequestParam Muffin baker) {
-        return new ResponseEntity<>(service.create(baker), HttpStatus.CREATED);
+    public ResponseEntity<Muffin> create(@RequestParam Muffin muffin) {
+        return new ResponseEntity<>(service.create(muffin), HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.PUT,value = "/muffins/{id}")
-    public ResponseEntity<Muffin> update(@PathVariable Long id,@RequestParam Muffin baker) {
-        return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
+    public ResponseEntity<Muffin> update(@PathVariable Long id,@RequestParam Muffin muffin) {
+        return new ResponseEntity<>(service.update(id, muffin), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/muffins/{id}")
